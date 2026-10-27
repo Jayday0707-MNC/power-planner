@@ -75,7 +75,7 @@ export default function Today() {
       value: formatDuration(wait),
       caption: 'to go',
       progress: 1 - wait / SIX_HOURS,
-      color: 'var(--accent)',
+      color: 'var(--amber)',
       label: 'Next outage',
       time: `${formatTime(next.startMs)} – ${formatTime(next.endMs)}`,
       sub: `Stage ${next.stage} · ${formatDuration(next.endMs - next.startMs)}`,

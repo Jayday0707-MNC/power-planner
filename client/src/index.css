@@ -194,3 +194,238 @@ a { text-decoration: none; }
 .tl-gap::before { content: ''; width: 8px; height: 8px; border-radius: 999px; background: var(--ok); }
 
 .tl-empty { position: absolute; left: 64px; top: 120px; margin: 0; font-size: 14px; color: var(--ok); }
+.gauge { display: flex; flex-direction: column; margin-top: 20px; }
+.gauge-time { font-size: 44px; line-height: 1.15; font-family: var(--mono); font-weight: 500; }
+.gauge-status { margin-top: 4px; min-height: 40px; font-size: 15px; line-height: 1.35; font-weight: 600; }
+
+.bar { position: relative; height: 28px; margin: 16px 0 34px; border-radius: 14px; background: var(--track); }
+.bar-fill { position: absolute; left: 0; top: 0; height: 28px; border-radius: 14px; }
+.bar-mark { position: absolute; top: -6px; width: 2px; height: 40px; background: var(--text); }
+.bar-label {
+  position: absolute;
+  top: 38px;
+  transform: translateX(-50%);
+  font-size: 12px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.bar-end { position: absolute; top: 38px; font-size: 12px; font-family: var(--mono); color: var(--muted); }
+
+.list-head { display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px; }
+.list-title { font-size: 16px; font-weight: 600; }
+.list-total { font-size: 14px; font-family: var(--mono); color: var(--muted); }
+
+.appliances { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.appliance {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+}
+.appliance-name { font-size: 16px; font-weight: 600; }
+.appliance-watts { margin-left: 10px; font-size: 12px; font-family: var(--mono); color: var(--muted); }
+
+.switch { position: relative; flex: none; width: 48px; height: 28px; border-radius: 14px; background: var(--border); }
+.switch.on { background: var(--accent); }
+.knob { position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 999px; background: var(--text); }
+.switch.on .knob { left: 23px; background: var(--bg); }
+.cost-hero { display: flex; flex-direction: column; gap: 2px; margin-top: 20px; }
+.cost-total { font-size: 44px; line-height: 1.15; font-family: var(--mono); font-weight: 500; }
+
+.breakdown { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.breakdown-row { display: flex; justify-content: space-between; font-size: 14px; }
+.breakdown-row .amt { font-family: var(--mono); color: var(--muted); }
+.breakdown-bar { height: 8px; margin-top: 6px; border-radius: 4px; background: var(--track); }
+.breakdown-fill { height: 8px; border-radius: 4px; background: var(--accent); }
+
+.cost-form { margin-top: 28px; }
+.cost-form h2 { margin: 0; }
+
+.chips { border: 0; margin: 20px 0 0; padding: 0; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips legend { padding: 0; margin: 0 0 8px; }
+.chip-btn {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chip-btn.on { border-color: var(--accent); background: var(--accent); color: var(--bg); }
+
+.primary-btn {
+  width: 100%;
+  height: 56px;
+  margin-top: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 17px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.entries { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 16px;
+  border-radius: 14px;
+  background: var(--surface);
+}
+.entry-name { display: block; font-size: 16px; font-weight: 600; }
+.entry-meta { display: block; font-size: 13px; color: var(--muted); }
+.entry-right { display: flex; align-items: center; gap: 4px; }
+.entry-amount { font-family: var(--mono); font-size: 16px; }
+.entry-delete { width: 44px; height: 44px; border: 0; background: none; color: var(--muted); font-size: 22px; cursor: pointer; }
+.entry-delete:hover { color: var(--warn); }
+/* ===== Lively style upgrade ===== */
+:root {
+  --amber: #ffc857;
+  --amber-2: #ff9f43;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-line: rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing background */
+body {
+  background:
+    radial-gradient(700px 420px at 90% -100px, rgba(91, 192, 240, 0.25), transparent 70%),
+    radial-gradient(600px 420px at -15% 35%, rgba(1, 89, 152, 0.45), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+.page h1 {
+  background: linear-gradient(90deg, #ffffff, #9fdcff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Frosted cards */
+.today-hero,
+.gauge,
+.cost-hero {
+  padding: 16px;
+  border-radius: 24px;
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  backdrop-filter: blur(10px);
+}
+.today-hero { gap: 14px; }
+.hero-time { font-size: 20px; }
+.gauge { padding: 20px 20px 4px; }
+
+.appliance,
+.entry,
+.area-item {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  backdrop-filter: blur(8px);
+}
+.appliance:hover,
+.area-item:hover { background: rgba(255, 255, 255, 0.1); }
+
+/* Gradient buttons */
+.primary-btn {
+  background: linear-gradient(135deg, #8bdcfa, #4ab3ea);
+  box-shadow: 0 10px 28px rgba(74, 179, 234, 0.35);
+}
+.chip-btn.on {
+  background: linear-gradient(135deg, #8bdcfa, #4ab3ea);
+  border-color: transparent;
+}
+.switch.on { background: linear-gradient(135deg, #8bdcfa, #4ab3ea); }
+
+/* Outage blocks in warm colours */
+.tl-block.featured {
+  background: linear-gradient(135deg, var(--amber), var(--amber-2));
+  box-shadow: 0 10px 30px rgba(255, 159, 67, 0.3);
+}
+.tl-block.featured.now {
+  background: linear-gradient(135deg, #ff9a7b, #ff6b57);
+  box-shadow: 0 10px 30px rgba(255, 107, 87, 0.35);
+}
+.tl-block.later {
+  background: var(--glass);
+  border: 2px solid rgba(255, 200, 87, 0.75);
+}
+.tl-block.later .block-label { color: var(--amber); }
+
+/* Floating tab bar */
+.app { padding-bottom: 110px; }
+.tabbar {
+  bottom: 12px;
+  width: calc(100% - 24px);
+  max-width: 406px;
+  height: 72px;
+  padding: 8px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #0a6bb8, #015998);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+.tab {
+  border-radius: 18px;
+  color: #e3f0fa;
+  transition: background 0.2s ease;
+}
+.tab.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+/* Colourful cost categories */
+.breakdown li[data-cat='fuel'] .breakdown-fill { background: var(--amber); }
+.breakdown li[data-cat='food'] .breakdown-fill { background: #ff8a6b; }
+.breakdown li[data-cat='light'] .breakdown-fill { background: #5bc0f0; }
+.breakdown li[data-cat='repairs'] .breakdown-fill { background: #b79cff; }
+.breakdown li[data-cat='other'] .breakdown-fill { background: #5ee0c0; }
+
+/* Motion */
+.ring-progress { transition: stroke-dasharray 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), stroke 0.3s ease; }
+.bar-fill { transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.breakdown-fill { transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.switch, .knob { transition: background 0.2s ease, left 0.2s ease; }
+button { transition: transform 0.12s ease, background 0.2s ease; }
+button:active { transform: scale(0.97); }
+
+.tl-now-dot { animation: pulse 1.8s ease-out infinite; }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(94, 224, 192, 0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(94, 224, 192, 0); }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.page > * { animation: rise 0.45s ease both; }
+.page > *:nth-child(2) { animation-delay: 0.04s; }
+.page > *:nth-child(3) { animation-delay: 0.08s; }
+.page > *:nth-child(4) { animation-delay: 0.12s; }
+.page > *:nth-child(5) { animation-delay: 0.16s; }
+.page > *:nth-child(6) { animation-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
